@@ -52,7 +52,9 @@ function normalizeUrl(url) {
 function favicon(url) {
   try {
     const u = new URL(url);
-    return `https://www.google.com/s2/favicons?sz=64&domain=${u.hostname}`;
+    const googleFaviconUrl = `https://www.google.com/s2/favicons?sz=64&domain=${u.hostname}`;
+    const proxiedUrl = `https://edgeone.uuzero.com/proxy?url=${encodeURIComponent(googleFaviconUrl)}`;
+    return proxiedUrl;
   } catch {
     return "";
   }
